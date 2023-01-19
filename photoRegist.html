@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="regist.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="main-container">
+      <button class="button-acept" id="start-camera">Iniciar camara</button>
+      <video
+        id="video"
+        width="320px"
+        height="240px"
+        autoplay
+        style="border: 1px solid; margin-bottom: 10px"
+      ></video>
+      <button class="button-acept" id="click-photo">Tomar foto</button>
+      <canvas
+        id="canvas"
+        width="320"
+        height="240"
+        style="border: 1px solid; margin-bottom: 10px"
+      ></canvas>
+      <div class="option-buttons">
+        <button class="button-acept" onclick="saveImage()">Registrar</button>
+
+        <button class="button-acept" onclick="movoToIndex()">Salir</button>
+      </div>
+    </div>
+    <script src="photoRegist.js"></script>
+  </body>
+</html>

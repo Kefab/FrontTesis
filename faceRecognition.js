@@ -114,13 +114,37 @@ async function updateQueryImageResults(src) {
       isPerson = true;
     }
   });
+  let params = new URLSearchParams(location.search);
 
   if (isPerson) {
-    alert("Paso");
-    window.location = "/mainPage.html";
+    const data = {
+      id: params.get("id"),
+      acces: 1,
+    };
+    alert("Validacion coorecta");
+    fetch("http://localhost:3000/acces", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: { "Content-type": "application/json; charset=UTF-8" },
+    });
   } else {
-    alert("No paso");
-    window.location = "/";
+    const data = {
+      id: params.get("id"),
+      acces: 0,
+    };
+    fetch("http://localhost:3000/acces", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: { "Content-type": "application/json; charset=UTF-8" },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.message == "UP") {
+          alert("Superado el limite maximo");
+        } else {
+          alert("Error en la validacion intente de nuevo");
+        }
+      });
   }
 
   console.log("saliendo..");

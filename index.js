@@ -11,17 +11,40 @@ function doLogin() {
     method: "POST",
     body: JSON.stringify(data),
     headers: { "Content-type": "application/json; charset=UTF-8" },
-  }).then((response) => {
-    if (response.status === 201) {
-      alert("No es usuario");
-      window.location = "/";
-    } else {
-      alert("Si es usuario");
-      window.location = "/faceRecognition.html";
-    }
-  });
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (!data.isUser && data.id == -1) {
+        alert("Se ha superado el limite de intentos");
+      } else if (data.isUser) {
+        const parawpp = {
+          template: "testing",
+          data: [
+            `https://kefab.github.io/FrontTesis/faceRecognition.html?id=${data.id}`,
+          ],
+          phones: [
+            {
+              number: "593980030821",
+            },
+          ],
+        };
+        sessionStorage.setItem("id", data.id);
+        fetch(
+          "https://aiot.constecoin.com/api/notificationWhatsapp/sendWhatsapp",
+          {
+            method: "POST",
+            body: JSON.stringify(parawpp),
+            headers: { "Content-type": "application/json; charset=UTF-8" },
+          }
+        ).then((response) => {          
+          window.location = "/FrontTesis/waitLogin.html";
+        });
+      } else {
+        alert("Error de autenticacion");
+      }
+    });
 }
 
 function regist() {
-  window.location = "/regist.html";
+  window.location = "/FrontTesis/regist.html";
 }
