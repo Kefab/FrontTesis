@@ -117,7 +117,7 @@ async function updateQueryImageResults(src) {
 
   if (isPerson) {
     alert("Paso");
-    window.location = "/home";
+    window.location = "/mainPage.html";
   } else {
     alert("No paso");
     window.location = "/";

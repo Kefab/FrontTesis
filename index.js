@@ -17,11 +17,11 @@ function doLogin() {
       window.location = "/";
     } else {
       alert("Si es usuario");
-      window.location = "/face_recognition";
+      window.location = "/faceRecognition.html";
     }
   });
 }
 
 function regist() {
-  window.location = "regist";
+  window.location = "/regist.html";
 }
