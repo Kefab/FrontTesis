@@ -40,7 +40,7 @@ function doLogin() {
           window.location = "/FrontTesis/waitLogin.html";
         });
       } else {
-        alert("Error de autenticacion");
+        alert("Error de  autenticacion");
       }
     });
 }
