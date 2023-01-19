@@ -1,8 +1,45 @@
-.main-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 26px auto;
-    background-color: white;
-    width: 50%;
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 26px auto;
+  background-color: white;
+  width: 50%;
+}
+
+.username,
+.password {
+  font-size: 24px;
+  font-family: FontAwesome;
+  margin: 15px;
+  box-shadow: 0px 2px 10px #c0bfbf inset;
+  border: none;
+  border-radius: 12px;
+  padding: 8px;
+}
+
+.button-acept {
+  background: linear-gradient(
+    344deg,
+    rgba(251, 255, 27, 0.437) 0%,
+    rgba(253, 45, 146, 0.55) 100%
+  );
+  font-size: 24px;
+  border-radius: 12px;
+  color: black;
+  font-weight: bold;
+  padding: 10px;
+  border: none;
+  margin-bottom: 15px;
+}
+
+.option-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;  
+}
+
+.option-buttons button{
+    margin-left: 30px;
+    margin-right: 30px;
 }

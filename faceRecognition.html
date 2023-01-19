@@ -10,28 +10,30 @@
     ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <link rel="stylesheet" href="./style.css" />
-    <link rel="stylesheet" href="face_recognition.css" />
+    
+    <link rel="stylesheet" href="regist.css" />
   </head>
   <body>
     <div class="main-container">
-      <button id="start-camera">Iniciar camara</button>
+      <h1>Autenticación</h1>
+      <button class="button-acept" id="start-camera">Iniciar camara</button>
       <video
         id="video"
         width="320px"
         height="240px"
         autoplay
-        style="border: 1px solid"
+        style="border: 1px solid; margin-bottom: 10px"
       ></video>
-      <button id="click-photo">Tomar foto</button>
+      <button class="button-acept" id="click-photo">Tomar foto</button>
       <canvas
         id="canvas"
         width="320"
         height="240"
-        style="border: 1px solid"
+        style="border: 1px solid; margin-bottom: 10px"
       ></canvas>
       <img id="prueba" />
 
-      <button onclick="hacerTodo()">Enviar</button>
+      <button class="button-acept" onclick="hacerTodo()">Enviar</button>
     </div>
     <script src="./faceRecognition.js"></script>
   </body>
