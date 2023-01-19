@@ -27,7 +27,7 @@ function saveUser() {
 
   const data = { username, password, phoneNumber };
 
-  fetch("http://localhost:3000/registUser", {
+  fetch("http://34.238.44.59:3000/registUser", {
     method: "POST",
     body: JSON.stringify(data),
     headers: { "Content-type": "application/json; charset=UTF-8" },

@@ -22,7 +22,7 @@ function saveImage() {
   canvas.toBlob(function (blob) {
     formData.append("image", blob, `${params.get("username")}.jpeg`);
     formData.append("id", params.get("id"));
-    fetch("http://localhost:3000/uploadImage", {
+    fetch("http://34.238.44.59:3000/uploadImage", {
       method: "POST",
       body: formData,
     }).then((res) => console.log(res));

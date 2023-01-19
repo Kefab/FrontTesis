@@ -5,7 +5,7 @@ function myCallback() {
   const data = {
     id: sessionStorage.getItem("id"),
   };
-  fetch("http://localhost:3000/loged", {
+  fetch("http://34.238.44.59:3000/loged", {
     method: "POST",
     body: JSON.stringify(data),
     headers: { "Content-type": "application/json; charset=UTF-8" },

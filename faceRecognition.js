@@ -22,7 +22,7 @@ click_button.addEventListener("click", function () {
 async function hacerTodo(e) {
   console.log("entro");
   var data = { name: "algo" };
-  fetch("http://localhost:3000/getImage", {
+  fetch("http://34.238.44.59:3000/getImage", {
     method: "POST",
     body: JSON.stringify(data),
     headers: { "Content-type": "application/json; charset=UTF-8" },
@@ -122,7 +122,7 @@ async function updateQueryImageResults(src) {
       acces: 1,
     };
     alert("Validacion coorecta");
-    fetch("http://localhost:3000/acces", {
+    fetch("http://34.238.44.59:3000/acces", {
       method: "POST",
       body: JSON.stringify(data),
       headers: { "Content-type": "application/json; charset=UTF-8" },
@@ -132,7 +132,7 @@ async function updateQueryImageResults(src) {
       id: params.get("id"),
       acces: 0,
     };
-    fetch("http://localhost:3000/acces", {
+    fetch("http://34.238.44.59:3000/acces", {
       method: "POST",
       body: JSON.stringify(data),
       headers: { "Content-type": "application/json; charset=UTF-8" },

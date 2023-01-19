@@ -7,7 +7,7 @@ function doLogin() {
   console.log(password);
   console.log(username);
   var data = { username, password };
-  fetch("http://localhost:3000/login", {
+  fetch("http://34.238.44.59:3000/login", {
     method: "POST",
     body: JSON.stringify(data),
     headers: { "Content-type": "application/json; charset=UTF-8" },
