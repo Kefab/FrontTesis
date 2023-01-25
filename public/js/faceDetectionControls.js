@@ -12,6 +12,7 @@ let inputSize = 512
 let scoreThreshold = 0.5
 
 function getFaceDetectorOptions() {
+  console.log('Entre')
   return selectedFaceDetector === SSD_MOBILENETV1
     ? new faceapi.SsdMobilenetv1Options({ minConfidence })
     : new faceapi.TinyFaceDetectorOptions({ inputSize, scoreThreshold })

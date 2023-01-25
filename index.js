@@ -1,4 +1,4 @@
-const { response } = require("express");
+const ipServer = "http://34.239.123.8:3000/";
 
 function doLogin() {
   const username = document.getElementById("username").value;
@@ -7,7 +7,7 @@ function doLogin() {
   console.log(password);
   console.log(username);
   var data = { username, password };
-  fetch("http://34.238.44.59:3000/login", {
+  fetch(`${ipServer}login`, {
     method: "POST",
     body: JSON.stringify(data),
     headers: { "Content-type": "application/json; charset=UTF-8" },
@@ -36,7 +36,7 @@ function doLogin() {
             body: JSON.stringify(parawpp),
             headers: { "Content-type": "application/json; charset=UTF-8" },
           }
-        ).then((response) => {          
+        ).then((response) => {
           window.location = "/FrontTesis/waitLogin.html";
         });
       } else {

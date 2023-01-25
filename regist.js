@@ -2,6 +2,7 @@ var camera_button = document.querySelector("#start-camera");
 var click_button = document.querySelector("#click-photo");
 var canvas = document.querySelector("#canvas");
 var video = document.querySelector("#video");
+const ipServer = "http://34.239.123.8:3000/";
 
 camera_button.addEventListener("click", async function () {
   let stream = await navigator.mediaDevices.getUserMedia({
@@ -27,7 +28,7 @@ function saveUser() {
 
   const data = { username, password, phoneNumber };
 
-  fetch("http://34.238.44.59:3000/registUser", {
+  fetch(`${ipServer}registUser`, {
     method: "POST",
     body: JSON.stringify(data),
     headers: { "Content-type": "application/json; charset=UTF-8" },

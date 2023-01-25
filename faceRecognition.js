@@ -4,6 +4,7 @@ let video = document.querySelector("#video");
 let click_button = document.querySelector("#click-photo");
 let canvas = document.querySelector("#canvas");
 let fot = document.getElementById("prueba");
+const ipServer = "http://34.239.123.8:3000/";
 
 camera_button.addEventListener("click", async function () {
   let stream = await navigator.mediaDevices.getUserMedia({
@@ -22,7 +23,7 @@ click_button.addEventListener("click", function () {
 async function hacerTodo(e) {
   console.log("entro");
   var data = { name: "algo" };
-  fetch("http://34.238.44.59:3000/getImage", {
+  fetch(`${ipServer}getImage`, {
     method: "POST",
     body: JSON.stringify(data),
     headers: { "Content-type": "application/json; charset=UTF-8" },
@@ -122,7 +123,7 @@ async function updateQueryImageResults(src) {
       acces: 1,
     };
     alert("Validacion coorecta");
-    fetch("http://34.238.44.59:3000/acces", {
+    fetch(`${ipServer}acces`, {
       method: "POST",
       body: JSON.stringify(data),
       headers: { "Content-type": "application/json; charset=UTF-8" },
@@ -132,7 +133,7 @@ async function updateQueryImageResults(src) {
       id: params.get("id"),
       acces: 0,
     };
-    fetch("http://34.238.44.59:3000/acces", {
+    fetch(`${ipServer}acces`, {
       method: "POST",
       body: JSON.stringify(data),
       headers: { "Content-type": "application/json; charset=UTF-8" },
@@ -156,7 +157,6 @@ async function updateResults() {
 }
 
 async function run() {
-  // load face detection, face landmark model and face recognition models
   await changeFaceDetector(selectedFaceDetector);
   await faceapi.loadFaceLandmarkModel("/");
   await faceapi.loadFaceRecognitionModel("/");
