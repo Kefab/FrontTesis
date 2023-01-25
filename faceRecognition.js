@@ -4,7 +4,7 @@ let video = document.querySelector("#video");
 let click_button = document.querySelector("#click-photo");
 let canvas = document.querySelector("#canvas");
 let fot = document.getElementById("prueba");
-const ipServer = "http://34.239.123.8:3000/";
+const ipServer = "https://www.kefab.click/";
 
 camera_button.addEventListener("click", async function () {
   let stream = await navigator.mediaDevices.getUserMedia({
@@ -21,7 +21,23 @@ click_button.addEventListener("click", function () {
 });
 
 async function hacerTodo(e) {
-  alert("Usuario logueado")
+  console.log("entro");
+  let params = new URLSearchParams(location.search);
+  var data = { name: params.get("username") };
+  fetch(`${ipServer}getImage`, {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: { "Content-type": "application/json; charset=UTF-8" },
+  })
+    .then((response) => response.blob())
+    .then(async (blob) => {
+      const img = URL.createObjectURL(blob);
+      await updateReferenceImageResults(img);
+      canvas.toBlob(async function (blob) {
+        const imgSrc = URL.createObjectURL(blob);
+        await updateQueryImageResults(imgSrc);
+      });
+    });
 }
 
 async function uploadRefImage(e) {
@@ -107,7 +123,7 @@ async function updateQueryImageResults(src) {
       id: params.get("id"),
       acces: 1,
     };
-    alert("Validacion coorecta");
+    alert("Validacion coorecta puede cerrar esta pagina.");
     fetch(`${ipServer}acces`, {
       method: "POST",
       body: JSON.stringify(data),
@@ -126,9 +142,9 @@ async function updateQueryImageResults(src) {
       .then((response) => response.json())
       .then((data) => {
         if (data.message == "UP") {
-          alert("Superado el limite maximo");
+          alert("Superado el limite maximo.");
         } else {
-          alert("Error en la validacion intente de nuevo");
+          alert("Error en la validacion intente de nuevo.");
         }
       });
   }

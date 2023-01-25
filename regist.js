@@ -2,7 +2,7 @@ var camera_button = document.querySelector("#start-camera");
 var click_button = document.querySelector("#click-photo");
 var canvas = document.querySelector("#canvas");
 var video = document.querySelector("#video");
-const ipServer = "http://34.239.123.8:3000/";
+const ipServer = "https://www.kefab.click/";
 
 camera_button.addEventListener("click", async function () {
   let stream = await navigator.mediaDevices.getUserMedia({
@@ -28,22 +28,33 @@ function saveUser() {
 
   const data = { username, password, phoneNumber };
 
-  sessionStorage.setItem("id", data.id);
-  const parawpp = {
-    template: "testing",
-    data: [
-      `https://kefab.github.io/FrontTesis/photoRegist.html?id=${data.id}&username=${username}`,
-    ],
-    phones: [
-      {
-        number: `593${phoneNumber}`,
-      },
-    ],
-  };
-  fetch("https://aiot.constecoin.com/api/notificationWhatsapp/sendWhatsapp", {
+  fetch(`${ipServer}registUser`, {
     method: "POST",
-    body: JSON.stringify(parawpp),
+    body: JSON.stringify(data),
     headers: { "Content-type": "application/json; charset=UTF-8" },
-  });
-  window.location = "/FrontTesis/waitPage.html";
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      sessionStorage.setItem("id", data.id);
+      const parawpp = {
+        template: "testing",
+        data: [
+          `https://kefab.github.io/FrontTesis/photoRegist.html?id=${data.id}&username=${username}`,
+        ],
+        phones: [
+          {
+            number: `593${phoneNumber}`,
+          },
+        ],
+      };
+      fetch(
+        "https://aiot.constecoin.com/api/notificationWhatsapp/sendWhatsapp",
+        {
+          method: "POST",
+          body: JSON.stringify(parawpp),
+          headers: { "Content-type": "application/json; charset=UTF-8" },
+        }
+      );
+      window.location = "/FrontTesis/waitPage.html";
+    });
 }
