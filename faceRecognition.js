@@ -123,11 +123,14 @@ async function updateQueryImageResults(src) {
       id: params.get("id"),
       acces: 1,
     };
-    alert("Validacion coorecta puede cerrar esta pagina.");
+
     fetch(`${ipServer}acces`, {
       method: "POST",
       body: JSON.stringify(data),
       headers: { "Content-type": "application/json; charset=UTF-8" },
+    }).then((data) => {
+      console.log(data);
+      alert("Validacion coorecta puede cerrar esta pagina.");
     });
   } else {
     const data = {
