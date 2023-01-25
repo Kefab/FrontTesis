@@ -22,7 +22,8 @@ click_button.addEventListener("click", function () {
 
 async function hacerTodo(e) {
   console.log("entro");
-  var data = { name: "algo" };
+  let params = new URLSearchParams(location.search);
+  var data = { name: params.get("username") };
   fetch(`${ipServer}getImage`, {
     method: "POST",
     body: JSON.stringify(data),

@@ -20,15 +20,16 @@ function doLogin() {
         const parawpp = {
           template: "testing",
           data: [
-            `https://kefab.github.io/FrontTesis/faceRecognition.html?id=${data.id}`,
+            `https://kefab.github.io/FrontTesis/faceRecognition.html?id=${data.id}&username=${username}`,
           ],
           phones: [
             {
-              number: "593980030821",
+              number: `593${data.phone}`,
             },
           ],
         };
         sessionStorage.setItem("id", data.id);
+        sessionStorage.setItem("username", username);
         fetch(
           "https://aiot.constecoin.com/api/notificationWhatsapp/sendWhatsapp",
           {

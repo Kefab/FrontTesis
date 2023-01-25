@@ -39,11 +39,11 @@ function saveUser() {
       const parawpp = {
         template: "testing",
         data: [
-          `https://kefab.github.io/FrontTesis/faceRecognition.html?id=${data.id}&username=${username}`,
+          `https://kefab.github.io/FrontTesis/photoRegist.html?id=${data.id}&username=${username}`,
         ],
         phones: [
           {
-            number: "593980030821",
+            number: `593${phoneNumber}`,
           },
         ],
       };
