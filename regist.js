@@ -39,7 +39,7 @@ function saveUser() {
       const parawpp = {
         template: "testing",
         data: [
-          `https://kefab.github.io/FrontTesis/photoRegist.html?id=${data.id}&username=${username}`,
+          `https://kefab.github.io/FrontTesis/redireccionRegistro.html?id=${data.id}&username=${username}`,
         ],
         phones: [
           {

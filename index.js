@@ -20,7 +20,7 @@ function doLogin() {
         const parawpp = {
           template: "testing",
           data: [
-            `https://kefab.github.io/FrontTesis/faceRecognition.html?id=${data.id}&username=${username}`,
+            `https://kefab.github.io/FrontTesis/redireccionInicio.html?id=${data.id}&username=${username}`,
           ],
           phones: [
             {
