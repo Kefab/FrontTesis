@@ -18,7 +18,7 @@ click_button.addEventListener("click", function () {
 });
 
 function saveImage() {
-  
+  alert("Foto guardada con exito");
 }
 
 async function updateReferenceImageResults(src) {

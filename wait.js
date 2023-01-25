@@ -3,7 +3,7 @@ const ipServer = "http://34.239.123.8:3000/";
 var num = 3;
 function myCallback() {
   console.log(num);
-  if (num == 5) {
+  if (num == 10) {
     window.location = "/FrontTesis/";
   } else {
     num += 1;

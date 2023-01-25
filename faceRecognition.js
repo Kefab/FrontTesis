@@ -21,7 +21,7 @@ click_button.addEventListener("click", function () {
 });
 
 async function hacerTodo(e) {
- 
+  alert("Usuario logueado")
 }
 
 async function uploadRefImage(e) {
