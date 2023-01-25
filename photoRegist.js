@@ -18,30 +18,7 @@ click_button.addEventListener("click", function () {
 });
 
 function saveImage() {
-  let params = new URLSearchParams(location.search);
-  var formData = new FormData();
-  canvas.toBlob(async function (blob) {
-    formData.append("image", blob, `${params.get("username")}.jpeg`);
-    formData.append("id", params.get("id"));
-    const img = URL.createObjectURL(blob);
-    const caras = await updateReferenceImageResults(img);
-    console.log(caras)
-    if (caras === -1) {
-      alert("No se ha encontrado una cara porfavor vuelva a intentarlo.");
-    } else if (caras === -2) {
-      alert("Se ha encontrado mas de un rostro porfavor vuelva a intentarlo.");
-    } else {
-      fetch(`${ipServer}uploadImage`, {
-        method: "POST",
-        body: formData,
-      }).then((res) => {
-        console.log(res);
-        alert(
-          "Registro completado puede continuar iniciando sesion en su equipo."
-        );
-      });
-    }
-  });
+  
 }
 
 async function updateReferenceImageResults(src) {

@@ -28,33 +28,22 @@ function saveUser() {
 
   const data = { username, password, phoneNumber };
 
-  fetch(`${ipServer}registUser`, {
+  sessionStorage.setItem("id", data.id);
+  const parawpp = {
+    template: "testing",
+    data: [
+      `https://kefab.github.io/FrontTesis/photoRegist.html?id=${data.id}&username=${username}`,
+    ],
+    phones: [
+      {
+        number: `593${phoneNumber}`,
+      },
+    ],
+  };
+  fetch("https://aiot.constecoin.com/api/notificationWhatsapp/sendWhatsapp", {
     method: "POST",
-    body: JSON.stringify(data),
+    body: JSON.stringify(parawpp),
     headers: { "Content-type": "application/json; charset=UTF-8" },
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      sessionStorage.setItem("id", data.id);
-      const parawpp = {
-        template: "testing",
-        data: [
-          `https://kefab.github.io/FrontTesis/photoRegist.html?id=${data.id}&username=${username}`,
-        ],
-        phones: [
-          {
-            number: `593${phoneNumber}`,
-          },
-        ],
-      };
-      fetch(
-        "https://aiot.constecoin.com/api/notificationWhatsapp/sendWhatsapp",
-        {
-          method: "POST",
-          body: JSON.stringify(parawpp),
-          headers: { "Content-type": "application/json; charset=UTF-8" },
-        }
-      );
-      window.location = "/FrontTesis/waitPage.html";
-    });
+  });
+  window.location = "/FrontTesis/waitPage.html";
 }

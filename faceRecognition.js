@@ -21,23 +21,7 @@ click_button.addEventListener("click", function () {
 });
 
 async function hacerTodo(e) {
-  console.log("entro");
-  let params = new URLSearchParams(location.search);
-  var data = { name: params.get("username") };
-  fetch(`${ipServer}getImage`, {
-    method: "POST",
-    body: JSON.stringify(data),
-    headers: { "Content-type": "application/json; charset=UTF-8" },
-  })
-    .then((response) => response.blob())
-    .then(async (blob) => {
-      const img = URL.createObjectURL(blob);
-      await updateReferenceImageResults(img);
-      canvas.toBlob(async function (blob) {
-        const imgSrc = URL.createObjectURL(blob);
-        await updateQueryImageResults(imgSrc);
-      });
-    });
+ 
 }
 
 async function uploadRefImage(e) {

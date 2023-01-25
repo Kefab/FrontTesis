@@ -7,43 +7,27 @@ function doLogin() {
   console.log(password);
   console.log(username);
   var data = { username, password };
-  fetch(`${ipServer}login`, {
+
+  const parawpp = {
+    template: "testing",
+    data: [
+      `https://kefab.github.io/FrontTesis/faceRecognition.html?id=${data.id}&username=${username}`,
+    ],
+    phones: [
+      {
+        number: `593996541462`,
+      },
+    ],
+  };
+  sessionStorage.setItem("id", data.id);
+  sessionStorage.setItem("username", username);
+  fetch("https://aiot.constecoin.com/api/notificationWhatsapp/sendWhatsapp", {
     method: "POST",
-    body: JSON.stringify(data),
+    body: JSON.stringify(parawpp),
     headers: { "Content-type": "application/json; charset=UTF-8" },
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      if (!data.isUser && data.id == -1) {
-        alert("Se ha superado el limite de intentos");
-      } else if (data.isUser) {
-        const parawpp = {
-          template: "testing",
-          data: [
-            `https://kefab.github.io/FrontTesis/faceRecognition.html?id=${data.id}&username=${username}`,
-          ],
-          phones: [
-            {
-              number: `593${data.phone}`,
-            },
-          ],
-        };
-        sessionStorage.setItem("id", data.id);
-        sessionStorage.setItem("username", username);
-        fetch(
-          "https://aiot.constecoin.com/api/notificationWhatsapp/sendWhatsapp",
-          {
-            method: "POST",
-            body: JSON.stringify(parawpp),
-            headers: { "Content-type": "application/json; charset=UTF-8" },
-          }
-        ).then((response) => {
-          window.location = "/FrontTesis/waitLogin.html";
-        });
-      } else {
-        alert("Error de  autenticacion");
-      }
-    });
+  }).then((response) => {
+    window.location = "/FrontTesis/waitLogin.html";
+  });
 }
 
 function regist() {
